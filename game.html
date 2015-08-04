@@ -1,42 +1,65 @@
+
 <script>
 
-var user, computer, answer;
+  var user, computer, answer;
+  var playing = true;
+  var userScore = 0;
+  var compScore = 0;
 
-user = prompt('rock, paper, or scissors?');
-// Here we are generating a random number betwen 1 and 100 and then assigning that value to the answer variable
-user = user.toUpperCase();
-answer = Math.floor(Math.random() * 100 + 1);
-if(answer < 33){
-  computer = "ROCK";
-}
-if(answer >= 33 && answer <= 66){
-  computer = "PAPER";
-}
-if(answer > 66){
-  computer = "SCISSORS";
-}
-
-console.log(answer + ' is a random nuber 1-100 for decision use');
-console.log('The computer threw ' + computer);
-console.log('User threw ' + user);
+    function upgradeGame() {
 
 
 
-if(user === computer){
-console.log('You and the computer both chose ' + user + '. There are no ties in life; you both lose!');
-alert('You and the computer both chose ' + user + '. There are no ties in life; you both lose!');
-}
-else {
-  if((user === 'ROCK' && computer === 'PAPER')||(user === 'PAPER' && computer === 'SCISSORS')||(user === 'SCISSORS' && computer === 'ROCK')){
-    console.log('You chose ' + user + ' and the computer chose ' + computer + '. ' + computer + ' beats ' + user + '. Game over, bro. You lose.');
-    alert('You chose ' + user + ' and the computer chose ' + computer + '. ' + computer + ' beats ' + user + '. Game over, bro. You lose.');
+    user = prompt('rock, paper, or scissors?');
 
+    // Here we are generating a random number betwen 1 and 100 and then assigning that value to the answer variable
+    user = user.toUpperCase();
+    answer = Math.floor(Math.random() * 100 + 1);
+      if(answer < 33){
+        computer = "ROCK";
+      }
+      if(answer >= 33 && answer <= 66){
+        computer = "PAPER";
+      }
+      if(answer > 66){
+        computer = "SCISSORS";
+      }
+
+    console.log(answer + ' is a random nuber 1-100 for decision use');
+    console.log('The computer threw ' + computer);
+    console.log('User threw ' + user);
+
+
+
+      if(user === computer){
+        alert('You and the computer both chose ' + user + '. There are no ties in life; you both lose!');
+      }
+      else {
+        if((user === 'ROCK' && computer === 'PAPER')||(user === 'PAPER' && computer === 'SCISSORS')||(user === 'SCISSORS' && computer === 'ROCK'))
+        {
+      alert('You chose ' + user + ' and the computer chose ' + computer + '. ' + computer + ' beats ' + user + '. Game over, bro. You lose.');
+          compScore++;
+
+      }
+      if((user === 'ROCK' && computer === 'SCISSORS')||(user === 'PAPER' && computer === 'ROCK')||(user === 'PAPER' && computer === 'ROCK'))
+      {
+     alert("You chose " + user + " and the computer chose " + computer + ". " + user + " beats " + computer + ". You have defeated the computer. Game over, computer.");
+
+          userScore++;
+        }
+        alert("The score is: You: " + userScore + ", Computer: " + compScore);
+      }
+    }
+
+    while(playing) {
+    upgradeGame();
   }
-  if((user === 'ROCK' && computer === 'SCISSORS')||(user === 'PAPER' && computer === 'ROCK')||(user === 'PAPER' && computer === 'ROCK')){
-    console.log("You chose " + user + " and the computer chose " + computer + ". " + user + " beats " + computer + ". You have defeated the computer. Game over, computer.");
-    alert("You chose " + user + " and the computer chose " + computer + ". " + user + " beats " + computer + ". You have defeated the computer. Game over, computer.");
-  }
-}
+
+
+
+
 
 
 </script>
+
+
