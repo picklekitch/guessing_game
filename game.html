@@ -2,36 +2,39 @@
 
 var user, computer, answer;
 
-user = prompt("rock, paper, or scissors?");
+user = prompt('rock, paper, or scissors?');
 // Here we are generating a random number betwen 1 and 100 and then assigning that value to the answer variable
 user = user.toUpperCase();
 answer = Math.floor(Math.random() * 100 + 1);
-if(answer << 33){
+if(answer < 33){
   computer = "ROCK";
 }
 if(answer >= 33 && answer <= 66){
   computer = "PAPER";
 }
-if(answer >> 66){
+if(answer > 66){
   computer = "SCISSORS";
 }
 
-console.log(answer);
-console.log(computer);
-console.log(user);
+console.log(answer + ' is a random nuber 1-100 for decision use');
+console.log('The computer threw ' + computer);
+console.log('User threw ' + user);
 
 
 
 if(user === computer){
-console.log("You and the computer both chose " + user + ". There are no ties in life; you both lose!");
+console.log('You and the computer both chose ' + user + '. There are no ties in life; you both lose!');
+alert('You and the computer both chose ' + user + '. There are no ties in life; you both lose!');
 }
 else {
-  if((user === "rock" && computer === "paper")||(user === "paper" && computer === "scissors")||(user === "scissors" && computer === "rock")){
-    console.log("You chose " + user + " and the computer chose " + computer + ". " + computer + " beats " + user + ". Game over, bro. You lose.");
+  if((user === 'ROCK' && computer === 'PAPER')||(user === 'PAPER' && computer === 'SCISSORS')||(user === 'SCISSORS' && computer === 'ROCK')){
+    console.log('You chose ' + user + ' and the computer chose ' + computer + '. ' + computer + ' beats ' + user + '. Game over, bro. You lose.');
+    alert('You chose ' + user + ' and the computer chose ' + computer + '. ' + computer + ' beats ' + user + '. Game over, bro. You lose.');
 
   }
-  if((user === "rock" && computer === "scissors")||(user === "paper" && computer === "rock")||(user === "paper" && computer === "rock")){
+  if((user === 'ROCK' && computer === 'SCISSORS')||(user === 'PAPER' && computer === 'ROCK')||(user === 'PAPER' && computer === 'ROCK')){
     console.log("You chose " + user + " and the computer chose " + computer + ". " + user + " beats " + computer + ". You have defeated the computer. Game over, computer.");
+    alert("You chose " + user + " and the computer chose " + computer + ". " + user + " beats " + computer + ". You have defeated the computer. Game over, computer.");
   }
 }
 
