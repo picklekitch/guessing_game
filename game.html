@@ -1,42 +1,74 @@
-<script>
-
-var user, computer, answer;
-
-user = prompt('rock, paper, or scissors?');
-// Here we are generating a random number betwen 1 and 100 and then assigning that value to the answer variable
-user = user.toUpperCase();
-answer = Math.floor(Math.random() * 100 + 1);
-if(answer < 33){
-  computer = "ROCK";
-}
-if(answer >= 33 && answer <= 66){
-  computer = "PAPER";
-}
-if(answer > 66){
-  computer = "SCISSORS";
-}
-
-console.log(answer + ' is a random nuber 1-100 for decision use');
-console.log('The computer threw ' + computer);
-console.log('User threw ' + user);
-
-
-
-if(user === computer){
-console.log('You and the computer both chose ' + user + '. There are no ties in life; you both lose!');
-alert('You and the computer both chose ' + user + '. There are no ties in life; you both lose!');
-}
-else {
-  if((user === 'ROCK' && computer === 'PAPER')||(user === 'PAPER' && computer === 'SCISSORS')||(user === 'SCISSORS' && computer === 'ROCK')){
-    console.log('You chose ' + user + ' and the computer chose ' + computer + '. ' + computer + ' beats ' + user + '. Game over, bro. You lose.');
-    alert('You chose ' + user + ' and the computer chose ' + computer + '. ' + computer + ' beats ' + user + '. Game over, bro. You lose.');
-
-  }
-  if((user === 'ROCK' && computer === 'SCISSORS')||(user === 'PAPER' && computer === 'ROCK')||(user === 'PAPER' && computer === 'ROCK')){
-    console.log("You chose " + user + " and the computer chose " + computer + ". " + user + " beats " + computer + ". You have defeated the computer. Game over, computer.");
-    alert("You chose " + user + " and the computer chose " + computer + ". " + user + " beats " + computer + ". You have defeated the computer. Game over, computer.");
-  }
-}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+  </head>
+  <body>
+    <img src="http://www.eagle1065.com/image/kegxr/UserFiles/Image/RPS%20Logo.jpg">
+    <h1>ROCK + PAPER + SCISSORS = MUCH FUN</h1>
+    <p>Whose turn is it to take out the trash? Whose turn is it to do the dishes? Which of you shall be my heir and one day rule the realms?</p>
+    <p>What do the above questions all have in common? They are all best decided through a good old fashioned game of rock, paper, scissors, of course! With this site, you will never have to make an informed decision again; the rock, paper, and scissors gods will do it for you!</p>
+    <p style="font-size:8px">(information surrounding decisions sold separately)</p>
+    <hr>
+    <h2>Rules of the Game</h2>
+    <ol>
+      <li>Choose one of the following: rock, paper, or scissors (DO NOT reveal your choice to your opponent)</li>
+      <li>You and your opponent simulataneously reveal your choices</li>
+      <li>The winner is decided by the following relationships:</li>
+        <ul>
+          <li>Rock SMASHES Scissors</li>
+          <li>Paper SMOTHERS Rock</li>
+          <li>Scissors CUTS Paper</li>
+        </ul>
+      <li>If you lose on the first throw, it is customary to demand a best 2 out of 3 format and to call your opponent a cheater they refuse</li>
+      <li>Refer to the USA Rock Paper Scissors League website official rulebook <a href="http://www.usarps.com/rules/">here</a> for more information on rules and tactics</li>
+    </ol>
+    <img src="http://pix-media.s3.amazonaws.com/blog/805/2009_toronto_match.jpg" height ="400" width ="500">
 
 
-</script>
+
+    <script>
+
+
+      GuessingGame = function(){
+        this.guess = '';
+        this.message = '';
+        this.answer = '';
+        this.answer2 = '';
+
+        this.getRandom = function(seed){
+          return Math.floor(Math.random() * seed + 1);
+        }
+        this.getMessage = function(){
+          if (this.guess != this.answer) {
+            this.message = 'You got it wrong. shoot!, Better luck next time'
+            alert(this.message);
+            this.guess = prompt('Guess again with a smaller number range, 1 to 10')
+            if (this.guess == this.answer2) {
+              this.message ='You are amazing!'
+              alert(this.message);
+            }
+            if (this.guess != this.answer2){
+              this.message = "You are wrong again, but you are still amazing!"
+                alert(this.message);
+            }
+          } else {
+            this.message = 'You won the amazing prize of feeling great about guessing right!'
+              alert(this.message);
+          }
+        }
+        this.run = function(){
+          this.answer = this.getRandom(100);
+          console.log(this.answer);
+          this.answer2 = this.getRandom(10);
+          console.log(this.answer2);
+          this.guess = prompt("I'm holding a random number raffle between 1 and 100. Give it your best guess!");
+          this.getMessage();
+        }
+      }
+      var guessingGame = new GuessingGame();
+      guessingGame.run();
+    </script>
+  </body>
+</html>
+
