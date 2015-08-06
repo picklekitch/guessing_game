@@ -1,60 +1,57 @@
 
 <script>
 
-  var user, computer, answer;
-  var playing = true;
-  var userScore = 0;
-  var compScore = 0;
+GuessingGame = function() {
+  this.user = '';
+  this.computer = '';
+  this.answer = '';
+  this.playing = true;
+  this.userScore = 0;
+  this.compScore = 0;
 
-    function upgradeGame() {
-
-
-
-    user = prompt('rock, paper, or scissors?');
-
+  this.upgradeGame = function() {
+    this.user = prompt('rock, paper, or scissors?');
     // Here we are generating a random number betwen 1 and 100 and then assigning that value to the answer variable
-    user = user.toUpperCase();
-    answer = Math.floor(Math.random() * 100 + 1);
-      if(answer < 33){
-        computer = "ROCK";
-      }
-      if(answer >= 33 && answer <= 66){
-        computer = "PAPER";
-      }
-      if(answer > 66){
-        computer = "SCISSORS";
-      }
+    this.user = this.user.toUpperCase();
+    this.answer = Math.floor(Math.random() * 100 + 1);
 
-    console.log(answer + ' is a random nuber 1-100 for decision use');
-    console.log('The computer threw ' + computer);
-    console.log('User threw ' + user);
-
-
-
-      if(user === computer){
-        alert('You and the computer both chose ' + user + '. There are no ties in life; you both lose!');
-      }
-      else {
-        if((user === 'ROCK' && computer === 'PAPER')||(user === 'PAPER' && computer === 'SCISSORS')||(user === 'SCISSORS' && computer === 'ROCK'))
-        {
-      alert('You chose ' + user + ' and the computer chose ' + computer + '. ' + computer + ' beats ' + user + '. Game over, bro. You lose.');
-          compScore++;
-
-      }
-      if((user === 'ROCK' && computer === 'SCISSORS')||(user === 'PAPER' && computer === 'ROCK')||(user === 'PAPER' && computer === 'ROCK'))
-      {
-     alert("You chose " + user + " and the computer chose " + computer + ". " + user + " beats " + computer + ". You have defeated the computer. Game over, computer.");
-
-          userScore++;
-        }
-        alert("The score is: You: " + userScore + ", Computer: " + compScore);
-      }
+    if(this.answer < 33){
+      this.computer = "ROCK";
+    }
+    if(this.answer >= 33 && this.answer <= 66){
+      this.computer = "PAPER";
+    }
+    if(this.answer > 66){
+      this.computer = "SCISSORS";
     }
 
-    while(playing) {
-    upgradeGame();
-  }
+    console.log(this.answer + ' is a random nuber 1-100 for decision use');
+    console.log('The computer threw ' + this.computer);
+    console.log('User threw ' + this.user);
 
+    if(this.user === this.computer){
+      alert('You and the computer both chose ' + this.user + '. There are no ties in life; you both lose!');
+    } else {
+      if ((this.user === 'ROCK' && this.computer === 'PAPER')||(this.user === 'PAPER' && this.computer === 'SCISSORS')||(this.user === 'SCISSORS' && this.computer === 'ROCK')) {
+        alert('You chose ' + this.user + ' and the computer chose ' + this.computer + '. ' + this.computer + ' beats ' + this.user + '. Game over, bro. You lose.');
+        this.compScore++;
+        console.log(this.compScore);
+      }
+      if ((this.user === 'ROCK' && this.computer === 'SCISSORS')||(this.user === 'PAPER' && this.computer === 'ROCK')||(this.user === 'PAPER' && this.computer === 'ROCK')) {
+        alert("You chose " + this.user + " and the computer chose " + this.computer + ". " + this.user + " beats " + this.computer + ". You have defeated the computer. Game over, computer.");
+        this.userScore++;
+        console.log(this.userScore);
+      }
+      alert("The score is: You: " + this.userScore + ", Computer: " + this.compScore);
+    }
+  }
+  while(this.playing){
+    this.upgradeGame();
+  }
+}
+
+var guessingGame = new GuessingGame();
+guessingGame.upgradeGame();
 
 
 
