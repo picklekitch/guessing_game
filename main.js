@@ -1,38 +1,52 @@
-GuessingGame = function(){
-        this.guess = '';
-        this.message = '';
-        this.answer = '';
-        this.answer2 = '';
+var GuessingGame = function() {
+  this.user = '';
+  this.computer = '';
+  this.answer = '';
+  this.playing = true;
+  this.rounds = 3;
+  this.userScore = 0;
+  this.compScore = 0;
+  this.upgradeGame = function() {
+  while(this.rounds){
 
-        this.getRandom = function(seed){
-          return Math.floor(Math.random() * seed + 1);
-        }
-        this.getMessage = function(){
-          if (this.guess != this.answer) {
-            this.message = 'You got it wrong. shoot!, Better luck next time'
-            alert(this.message);
-            this.guess = prompt('Guess again with a smaller number range, 1 to 10')
-            if (this.guess == this.answer2) {
-              this.message ='You are amazing!'
-              alert(this.message);
-            }
-            if (this.guess != this.answer2){
-              this.message = "You are wrong again, but you are still amazing!"
-                alert(this.message);
-            }
-          } else {
-            this.message = 'You won the amazing prize of feeling great about guessing right!'
-              alert(this.message);
-          }
-        }
-        this.run = function(){
-          this.answer = this.getRandom(100);
-          console.log(this.answer);
-          this.answer2 = this.getRandom(10);
-          console.log(this.answer2);
-          this.guess = prompt("I'm holding a random number raffle between 1 and 100. Give it your best guess!");
-          this.getMessage();
-        }
+    this.user = prompt('rock, paper, or scissors?');
+    // Here we are generating a random number betwen 1 and 100 and then assigning that value to the answer variable
+    this.user = this.user.toUpperCase();
+    this.answer = Math.floor(Math.random() * 100 + 1);
+    if(this.answer < 33){
+      this.computer = "ROCK";
+    }
+    if(this.answer >= 33 && this.answer <= 66){
+      this.computer = "PAPER";
+    }
+    if(this.answer > 66){
+      this.computer = "SCISSORS";
+    }
+    console.log(this.answer + ' is a random nuber 1-100 for decision use');
+    console.log('The computer threw ' + this.computer);
+    console.log('User threw ' + this.user);
+    if(this.user === this.computer){
+      alert('You and the computer both chose ' + this.user + '. There are no ties in life; you both lose!');
+    } else {
+      if ((this.user === 'ROCK' && this.computer === 'PAPER')||(this.user === 'PAPER' && this.computer === 'SCISSORS')||(this.user === 'SCISSORS' && this.computer === 'ROCK')) {
+        alert('You chose ' + this.user + ' and the computer chose ' + this.computer + '. ' + this.computer + ' beats ' + this.user + '. Game over, bro. You lose.');
+        this.compScore++;
+        console.log(this.compScore);
+        this.rounds--;
       }
-      var guessingGame = new GuessingGame();
-      guessingGame.run();
+      if ((this.user === 'ROCK' && this.computer === 'SCISSORS')||(this.user === 'PAPER' && this.computer === 'ROCK')||(this.user === 'PAPER' && this.computer === 'ROCK')) {
+        alert("You chose " + this.user + " and the computer chose " + this.computer + ". " + this.user + " beats " + this.computer + ". You have defeated the computer. Game over, computer.");
+        this.userScore++;
+        console.log(this.userScore);
+        this.rounds--;
+      }
+      alert("The score is: You: " + this.userScore + ", Computer: " + this.compScore);
+    }
+  }
+  var uScore = document.getElementById('userScore');
+      uScore.innerHTML = "The user score is: " + this.userScore;
+  var cScore = document.getElementById('compScore');
+      cScore.innerHTML = "The computer score is: " + this.compScore;
+  }
+}
+var guessingGame = new GuessingGame();
